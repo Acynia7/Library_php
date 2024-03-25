@@ -1,0 +1,40 @@
+/* Reset des marges et des padding */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Définition des dimensions de la page A4 */
+@page {
+    size: A4;
+    margin: 0;
+}
+
+/* Style du contenu de la page */
+.page {
+    width: 210mm; /* Largeur de la page A4 */
+    height: 297mm; /* Hauteur de la page A4 */
+    margin: 20mm auto; /* Marges de 20mm à gauche et à droite, centrage vertical */
+    padding: 10mm; /* Espacement interne de 10mm */
+    border: 1px solid #000; /* Bordure de 1px solide */
+    box-sizing: border-box; /* Inclut la bordure dans les dimensions */
+}
+
+/* Style pour l'en-tête */
+.header {
+    text-align: center; /* Centrage du contenu */
+    margin-bottom: 20px; /* Marge inférieure de 20px */
+}
+
+/* Style pour le corps de la page */
+.body {
+    font-family: Arial, sans-serif; /* Police de caractères par défaut */
+    font-size: 12px; /* Taille de police par défaut */
+    line-height: 1.5; /* Hauteur de ligne de 1.5 */
+}
+
+/* Style pour le pied de page */
+.footer {
+    text-align: center; /* Centrage du contenu */
+    margin-top: 20px; /* Marge supérieure de 20px */
+}
