@@ -8,3 +8,25 @@ body {
     background-attachment: fixed;
     color: white;
 }
+
+.navbar{
+    display:flex;
+    flex-direction: row-reverse;
+    background-color: #333; /* Couleur de fond */
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left; /* Pour aligner les liens horizontalement */
+    display: block; /* Pour que les liens prennent toute la largeur disponible */
+    color: white; /* Couleur du texte */
+    text-align: center; /* Centrage du texte */
+    padding: 14px 16px; /* Espacement intérieur */
+    text-decoration: none; /* Suppression du soulignement par défaut */
+  }
+  
+  /* Style des liens au survol de la souris */
+  .navbar a:hover {
+    background-color: #ddd; /* Couleur de fond au survol */
+    color: black; /* Couleur du texte au survol */
+  }
