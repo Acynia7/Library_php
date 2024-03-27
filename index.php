@@ -7,11 +7,13 @@
     <head>
         <title> Index </title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="assets/styles.css">
+        <link rel="stylesheet" href="assets\style.css">
     </head>
 
     <body>
-        <div class="navbar"> Se connecter en tant qu'admin </div>
+        <div class="navbar">
+        <a href="login.php">Se connecter en tant qu'admin</a>
+    </div>
     </body>
     
 </html>
