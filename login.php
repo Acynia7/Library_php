@@ -6,7 +6,7 @@
     if (!empty($_POST)) {
         // Connexion à la base de données
         include ('includes/db.php');
-        $conn = connect();
+        $conn = connect2();
         
         // Récupération des données du formulaire
         $username = $_POST['login'];
@@ -41,7 +41,7 @@
     <head>
         <title> Login </title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="assets/styles.css">
+        <link rel="stylesheet" href="assets/styles2.css">
     </head>
 
     <body>

@@ -2,7 +2,7 @@
 <html>
     <head>
         <title> Enregistrement </title>
-        <link rel="stylesheet" href="assets/styles.css">
+        <link rel="stylesheet" href="assets/styles2.css">
     </head>
 
     <body>
@@ -21,7 +21,7 @@
     <?php
         if (!empty($_POST)){
             include ('includes/db.php');
-            $conn = connect();
+            $conn = connect2();
             
             // Transformation du mot de passe en hash
             $_POST['mdp'] = password_hash($_POST['mdp'], PASSWORD_DEFAULT);

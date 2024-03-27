@@ -13,7 +13,7 @@ if (!isset($_SESSION['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/styles2.css">
 
 </head>
 <body>
@@ -38,40 +38,49 @@ if (!isset($_SESSION['login'])) {
     include ('includes/db.php');
     $conn = connect();
 
-    $req1= "SELECT id, login FROM login";
-    $stmt1 = $conn->prepare($req1);
-    $stmt1->execute();
-    $result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+    $req= "SELECT * FROM block";
+    $stmt = $conn->prepare($req);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <table class="table">
-<thead>
-    <tr>
-        <th>Identifiant</th>
-        <th>Modifier</th>
-        <th>Supprimer</th>
-    </tr>
-</thead>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nominal ID</th>
+            <th>Name</th>
+            <th>Stackable</th>
+            <th>Gravity</th>
+            <th>Transparency</th>
+            <th>Luminous</th>
+            <th>Loot</th>
+            <th>Modify</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
 
-<tbody>
-    <?php
-    foreach($result1 as $row){
-        echo "<tr>";
-        echo "<td>" . $row['login'] . "</td>";
-        ?>
-        <td>
-        <a href="modif.php?id=<?php echo $row['id']; ?>"> <img class='modif' src='assets/modif.png' style='width:20px;height:20px'> </a>
-        </td>
-        <td>
-        <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')"> <img class='supp' src='assets/supprimer.png' style='width:25px;height:25px'>
-            <i class="fas fa-trash-alt"></i>
-        </a>
-        </td>
-    <?php
-    }
-    ?>
-</tbody>
+    <tbody>
+    <?php foreach($result as $row): ?>
+        <tr>
+            <?php foreach($row as $value): ?>
+                <td><?php echo $value?></td>
+            <?php endforeach; ?>
+            <td>
+                <a href="modif.php?id=<?php echo $row['id']; ?>">
+                    <img class='modif' src='assets/modif.png' style='width:20px;height:20px'>
+                </a>
+            </td>
+            <td>
+                <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
+                    <img class='supp' src='assets/supprimer.png' style='width:25px;height:25px'>
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
 </table>
+
 </body>
 </html>
 
