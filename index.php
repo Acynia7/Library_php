@@ -14,10 +14,20 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                    <div class="col col-2"> &nbsp; </div>
-                    <div class="col col-8 text-center bg-secondary-subtle text-right"> <a href="login.php">Connect as an admin</a> </div>
-                    <div class="col col-2"> &nbsp; </div>
+                <div class="col col-2"> &nbsp; </div>
+                <div class="col col-8 text-center bg-secondary-subtle text-right"> <a href="login.php">Connect as an admin</a> </div>
+                <div class="col col-2"> &nbsp; </div>
             </div>
+
+            <div class="row">
+                <div class="col col-2"> &nbsp; </div>
+                <div class="col col-8 text-center bg-secondary-subtle text-right"> 
+
+
+
+                
+                </div>
+                <div class="col col-2"> &nbsp; </div>
         </div>
     </body>
     
