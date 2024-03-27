@@ -17,7 +17,7 @@ if(!empty($_GET['id']) && is_numeric($_GET['id'])) {
 
     $id = $_GET['id'];
 
-    $sql = "DELETE FROM `login` WHERE id = ?";
+    $sql = "DELETE FROM `block` WHERE id = ?";
 
     $stmt = $conn->prepare($sql);
 
