@@ -26,17 +26,43 @@
             <div class="col col-2"> &nbsp; </div>
             <div class="col col-8 text-center bg-secondary-subtle text-right"> 
                 <?php
-                $req = "SELECT id FROM block";
+                $req = "SELECT id, name FROM block";
                 $stmt = $conn->prepare($req);
                 $stmt->execute();
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+                ?> <div class="image-container"> <?php
                 foreach ($result as $row):
-                    $id = $row['id'];
-                    echo "<img class='img' src='assets/img/img_$id.png'>";
-                endforeach;
+                $id = $row['id'];
+                $name = $row['name'];
                 ?>
+                <div class="image-name-wrapper">
+                    <img class='img' src='assets/img/img_<?php echo $id; ?>.png'>
+                    <div class="name"><?php echo $name; ?></div>
+                    <button class="more" onclick="openModal()"> See more </button>
+                </div>
+                <?php endforeach; ?>
             </div>
+            </div>
+
+            <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <iframe src="detail.php"></iframe> <!-- Contenu à afficher dans la boîte modale -->
+            </div>
+            </div>
+
+            <script>
+            // Fonction pour ouvrir la boîte modale
+            function openModal() {
+            document.getElementById("myModal").style.display = "block";
+            }
+
+            // Fonction pour fermer la boîte modale
+            function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+            }
+            </script>
             <div class="col col-2"> &nbsp; </div>
         </div>
     </div>

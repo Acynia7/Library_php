@@ -30,3 +30,49 @@ body {
     background-color: #ddd; /* Couleur de fond au survol */
     color: black; /* Couleur du texte au survol */
   }
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap; /* Permet le passage à la ligne */
+    justify-content: center; /* Centre les éléments horizontalement */
+}
+
+.image-name-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les éléments verticalement */
+    margin: 10px; /* Marge entre chaque paire image/nom */
+}
+
+.img {
+    height: 200px; /* Ajustez la taille de l'image selon vos besoins */
+    width: auto; /* Ajustement automatique de la largeur en fonction de la hauteur pour préserver les proportions */
+}
+
+.name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center; /* Centre le texte */
+}
+
+.modal {
+    display: none; /* Par défaut, la boîte modale est cachée */
+    position: fixed; /* Position fixe pour recouvrir toute la page */
+    z-index: 1; /* Place la boîte modale au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 50%; /* Largeur de la boîte modale */
+    height: 50%; /* Hauteur de la boîte modale */
+    overflow: auto; /* Permet de faire défiler la boîte modale si nécessaire */
+    background-color: rgba(0,0,0,0.4); /* Fond noir semi-transparent */
+}
+
+/* Style pour le contenu de la boîte modale */
+.modal-content {
+    background-color: #fefefe; /* Fond blanc */
+    margin: auto; /* Centrer la boîte modale horizontalement et verticalement */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%; /* Largeur du contenu de la boîte modale */
+    height: 100%; /* Hauteur du contenu de la boîte modale */
+}
