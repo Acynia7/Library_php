@@ -22,16 +22,24 @@
             <div class="col col-2"> &nbsp; </div>
         </div>
 
-            <div class="row">
-                <div class="col col-2"> &nbsp; </div>
-                <div class="col col-8 text-center bg-secondary-subtle text-right"> 
+        <div class="row">
+            <div class="col col-2"> &nbsp; </div>
+            <div class="col col-8 text-center bg-secondary-subtle text-right"> 
+                <?php
+                $req = "SELECT id FROM block";
+                $stmt = $conn->prepare($req);
+                $stmt->execute();
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-
-
-                </div>
-                <div class="col col-2"> &nbsp; </div>
+                foreach ($result as $row):
+                    $id = $row['id'];
+                    echo "<img class='img' src='assets/img/img_$id.png'>";
+                endforeach;
+                ?>
+            </div>
+            <div class="col col-2"> &nbsp; </div>
         </div>
+    </div>
+
     </body>
-    
 </html>

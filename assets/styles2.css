@@ -117,3 +117,10 @@ a {
     text-decoration: none;
     white-space: nowrap;
 }
+
+.img{
+    display:grid;
+    height:100px;
+    width:100px;
+    padding:20px;
+}
