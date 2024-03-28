@@ -12,12 +12,15 @@
     </head>
 
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col col-2"> &nbsp; </div>
-                <div class="col col-8 text-center bg-secondary-subtle text-right"> <a href="login.php">Connect as an admin</a> </div>
-                <div class="col col-2"> &nbsp; </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-2"> &nbsp; </div>
+            <div class="col text-left bg-white"> 
+                <a class="navbar-brand" href="index.php"> <img class="logo" src="assets/logo.jpg" style="object-fit: contain; margin-right: 0.3em"> </a>
+                <a href="login.php">Connect as an admin</a>
             </div>
+            <div class="col col-2"> &nbsp; </div>
+        </div>
 
             <div class="row">
                 <div class="col col-2"> &nbsp; </div>
@@ -25,7 +28,7 @@
 
 
 
-                
+
                 </div>
                 <div class="col col-2"> &nbsp; </div>
         </div>
