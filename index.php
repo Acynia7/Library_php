@@ -60,40 +60,16 @@
                 <div class="image-name-wrapper">
                     <img class='img' src='assets/img/img_<?php echo $id; ?>.png'>
                     <div class="name"><?php echo $name; ?></div>
-                    <button class="more" onclick="openModal()"> See more </button>
+                    <button class="more" onclick="openModal(<?php echo $id; ?>)"> See more </button>
                 </div>
                 <?php endforeach; ?>
             </div>
             </div>
 
-            <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <iframe src="detail.php"></iframe> <!-- Contenu à afficher dans la boîte modale -->
-            </div>
-            </div>
-
-            <script>
-            // Fonction pour ouvrir la boîte modale
-            function openModal() {
-            document.getElementById("myModal").style.display = "block";
-            }
-
-            // Fonction pour fermer la boîte modale
-            function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-            }
-            </script>
+            
 
             <nav aria-label="Page navigation exemple">
             <ul class="pagination justify-content-center">
-
-                <?php
-                
-
-                
-                ?>
-
                 <!-- Page précédente -->
                 <?php
                 if ($currentPage > 1): ?>
@@ -151,6 +127,25 @@
         <div class="col col-2"> &nbsp; </div>
         </div>
     </div>
+    
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <iframe id="iframeDetail" src=""></iframe> <!-- Contenu à afficher dans la boîte modale -->
+    </div>
+    </div>
 
+    <script>
+        // Fonction pour ouvrir la boîte modale avec l'ID du block
+        function openModal(id) {
+            document.getElementById("myModal").style.display = "block";
+            document.getElementById("iframeDetail").src = "detail.php?id=" + id;
+        }
+
+        // Fonction pour fermer la boîte modale
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+    </script>
     </body>
 </html>

@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image :url("background2.png"); 
+    background-repeat:no-repeat; 
+    background-position:center; 
+    background-size:cover; 
+    background-attachment: fixed;
+    color: white;
+}
+
+.details {
+    height: 200%;
+    width: 100%; /* Ensure it takes up the full width */
+    display: flex; /* Use flexbox to control layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.modal {
+    display: none; /* Par défaut, la boîte modale est cachée */
+    position: relative; /* Position fixe pour recouvrir toute la page */
+    z-index: 1; /* Place la boîte modale au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 50%;
+    overflow: auto; /* Permet de faire défiler la boîte modale si nécessaire */
+    background-color: rgba(0,0,0,0.4); /* Fond noir semi-transparent */
+}
+
+/* Style pour le contenu de la boîte modale */
+.modal-content {
+    background-color: #fefefe; /* Fond blanc */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    top: 50%; /* Place le haut de la boîte modale à 50% de la hauteur de la fenêtre */
+    left: 50%; /* Place la gauche de la boîte modale à 50% de la largeur de la fenêtre */
+    transform: translate(-50%, -50%); /* Centre la boîte modale horizontalement et verticalement */
+    width: 68% !important; /* Définit la largeur de la boîte modale à 50% de la fenêtre */
+    height: 70%; /* Définit la hauteur de la boîte modale à 50% de la fenêtre */
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

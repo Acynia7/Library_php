@@ -63,13 +63,35 @@
 
 /* Style pour le contenu de la boîte modale */
 .modal-content {
-    background-color: #fefefe; /* Fond blanc */
-    position: fixed; /* Permet de positionner la boîte modale par rapport à la fenêtre du navigateur */
-    top: 50%; /* Place le haut de la boîte modale à 50% de la hauteur de la fenêtre */
-    left: 50%; /* Place la gauche de la boîte modale à 50% de la largeur de la fenêtre */
-    transform: translate(-50%, -50%); /* Centre la boîte modale horizontalement et verticalement */
-    width: 68% !important; /* Définit la largeur de la boîte modale à 50% de la fenêtre */
-    height: 70%; /* Définit la hauteur de la boîte modale à 50% de la fenêtre */
+    background-color: #fefefe;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68% !important;
+    height: 70%;
+    max-height: 90vh; /* Ajustez la hauteur maximale en fonction de la hauteur de la fenêtre */
+    overflow-y: auto; /* Ajoutez un défilement vertical si nécessaire */
+}
+
+.details {
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg_detail{
+    margin: 0;
+    padding: 0;
+    background-image :url("background2.png"); 
+    background-repeat:no-repeat; 
+    background-position:center; 
+    background-size:cover; 
+    background-attachment: fixed;
+    color: white;
 }
 
 body {
