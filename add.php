@@ -1,4 +1,7 @@
 <?php
+include('includes/db.php');
+$conn = connect();
+
 // Vérifier si l'utilisateur est connecté
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -7,9 +10,6 @@ if (!isset($_SESSION['login'])) {
 }
 
 if (!empty($_POST)) {
-    include ('includes/db.php');
-    $conn = connect();
-
     $req = $conn->prepare("INSERT INTO library.block (nominal_id, name, stackable, gravity, transparency, luminous, loot) VALUES(:nominal, :name, :stack, :gravity, :trans, :luminous, :loot);");
 
     $nominal = $_POST['nominal'];
@@ -33,6 +33,23 @@ if (!empty($_POST)) {
     $result = $req->execute();
 
     if ($result) {
+        // Get the ID of the newly inserted record
+        $lastInsertId = $conn->lastInsertId();
+
+        // Upload the file with the ID as its name
+        if (isset($_FILES['file'])) {
+            $tmpName = $_FILES['file']['tmp_name'];
+            $name = $_FILES['file']['name'];
+            $size = $_FILES['file']['size'];
+            $error = $_FILES['file']['error'];
+
+            // Construct the new filename using the ID
+            $newFileName = 'img_' . $lastInsertId . '.png';
+
+            // Move the uploaded file to the desired location with the new filename
+            move_uploaded_file($tmpName, 'assets/img/' . $newFileName);
+        }
+
         header("Location: welcome.php");
         exit(); // Assurez-vous de sortir du script après la redirection
     } else {
@@ -43,30 +60,33 @@ if (!empty($_POST)) {
 
 <!doctype html>
 <html>
-    <head>
-        <title> Creation </title>
-        <link rel="stylesheet" href="assets/styles2.css">
-    </head>
+<head>
+    <title> Creation </title>
+    <link rel="stylesheet" href="assets/styles2.css">
+</head>
 
-    <body>
-        <h1 class="create"> New block creation </h1>
+<body>
+<h1 class="create"> New block creation </h1>
 
-        <form class="create" action="add.php" method="post">
-            Nominal ID: <br>
-            <input type="text" name="nominal"></input> <br>
-            Name: <br>
-            <input type="text" name="name"></input> <br>
-            Stackable: <br>
-            <input type="text" name="stack"></input> <br>
-            Gravity? (0 (No) / 1 (Yes)): <br>
-            <input type="text" name="gravity"></input> <br>
-            Transparent? (0 / 1): <br>
-            <input type="text" name="trans"></input> <br>
-            Luminous? (0 / 1): <br>
-            <input type="text" name="luminous"></input> <br>
-            Loot: <br>
-            <input type="text" name="loot"></input> <br>
+<form class="create" action="add.php" method="post" enctype="multipart/form-data">
+    Nominal ID: <br>
+    <input type="text" name="nominal"></input> <br>
+    Name: <br>
+    <input type="text" name="name"></input> <br>
+    Stackable: <br>
+    <input type="text" name="stack"></input> <br>
+    Gravity? (0 (No) / 1 (Yes)): <br>
+    <input type="text" name="gravity"></input> <br>
+    Transparent? (0 / 1): <br>
+    <input type="text" name="trans"></input> <br>
+    Luminous? (0 / 1): <br>
+    <input type="text" name="luminous"></input> <br>
+    Loot: <br>
+    <input type="text" name="loot"></input> <br>
+    <label for="file">Image: </label>
+    <input type="file" name="file">
 
-            <input type="submit" name="send" value="Create"> <br> <br>
-        </form>
-    </body>
+    <input type="submit" name="send" value="Create"> <br> <br>
+</form>
+</body>
+</html>

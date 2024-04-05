@@ -40,6 +40,9 @@
     width: auto; /* Ajustement automatique de la largeur en fonction de la hauteur pour préserver les proportions */
 }
 
+.col.text-left.bg-white {
+    margin-top: 50px;
+}
 .name {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -65,8 +68,8 @@
     top: 50%; /* Place le haut de la boîte modale à 50% de la hauteur de la fenêtre */
     left: 50%; /* Place la gauche de la boîte modale à 50% de la largeur de la fenêtre */
     transform: translate(-50%, -50%); /* Centre la boîte modale horizontalement et verticalement */
-    width: 50%; /* Définit la largeur de la boîte modale à 50% de la fenêtre */
-    height: 50%; /* Définit la hauteur de la boîte modale à 50% de la fenêtre */
+    width: 68% !important; /* Définit la largeur de la boîte modale à 50% de la fenêtre */
+    height: 70%; /* Définit la hauteur de la boîte modale à 50% de la fenêtre */
 }
 
 body {

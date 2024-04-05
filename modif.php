@@ -7,18 +7,18 @@ if (!isset($_SESSION['login'])) {
 }
 
 // Vérifier si l'ID est défini dans l'URL
-if(isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
-} 
+}
 
 if (!empty($_POST)) {
-    include ('includes/db.php');
+    include('includes/db.php');
     $conn = connect();
-    
+
     // Utilisez une requête UPDATE pour mettre à jour le nom d'utilisateur et le mot de passe
     $sql = "UPDATE library.block SET nominal_id=?, name=?, stackable=?, gravity=?, transparency=?, luminous=?, loot=? WHERE id=?;";
     $stmt = $conn->prepare($sql);
-    
+
     // Liaison des paramètres
     $stmt->bindParam(1, $_POST['nominal']);
     $stmt->bindParam(2, $_POST['name']);
@@ -28,12 +28,26 @@ if (!empty($_POST)) {
     $stmt->bindParam(6, $_POST['luminous']);
     $stmt->bindParam(7, $_POST['loot']);
     $stmt->bindParam(8, $_POST['id']); // Assurez-vous d'avoir l'ID du block à mettre à jour
-    
+
     // Exécution de la requête
     $result = $stmt->execute();
 
-    // Redirection après la mise à jour
+    // Gérer la modification de l'image
     if ($result) {
+        // Si une image est téléchargée
+        if (isset($_FILES['file'])) {
+            $tmpName = $_FILES['file']['tmp_name'];
+            $name = $_FILES['file']['name'];
+            $size = $_FILES['file']['size'];
+            $error = $_FILES['file']['error'];
+
+            // Générer un nouveau nom de fichier unique basé sur l'ID
+            $newFileName = 'img_' . $id . '.png';
+
+            // Déplacer le fichier téléchargé vers l'emplacement désiré avec le nouveau nom de fichier
+            move_uploaded_file($tmpName, 'assets/img/' . $newFileName);
+        }
+
         header("Location: welcome.php");
         exit(); // Assurez-vous de sortir du script après la redirection
     } else {
@@ -51,7 +65,7 @@ if (!empty($_POST)) {
 <body>
     <h1 class="create"> Block update </h1>
 
-    <form class="create" action="modif.php?id=<?php echo $id ?>" method="post">
+    <form class="create" action="modif.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
         Nominal ID: <br>
         <input type="text" name="nominal"></input> <br>
         Name: <br>
@@ -69,10 +83,12 @@ if (!empty($_POST)) {
 
         <!-- Ajouter un champ caché pour l'ID de l'utilisateur -->
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>"></input>
+        
+        <!-- Ajouter un champ pour l'upload de l'image -->
+        <label for="file">Image: </label>
+        <input type="file" name="file">
 
         <input type="submit" name="send" value="Update"> <br> <br>
     </form>
 </body>  
 </html>
-
-
