@@ -47,6 +47,11 @@ p {
     margin-left:400px;
 }
 
+.select{
+    margin-top:7px;
+    margin-bottom:7px;
+}
+
 /* Style des champs de formulaire */
 input[type="text"],
 input[type="password"],

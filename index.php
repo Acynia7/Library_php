@@ -1,7 +1,3 @@
-<?php
-    include ('includes/db.php');
-    $conn = connect();
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +14,7 @@
             <div class="col col-2"> &nbsp; </div>
             <div class="col text-left bg-white"> 
                 <a class="navbar-brand" href="index.php"> <img class="logo" src="assets/logo.jpg" style="object-fit: contain; margin-right: 0.3em"> </a>
-                <a href="login.php">Connect as an admin</a>
+                <a class="conn" href="login.php">Connect as an admin</a>
             </div>
             <div class="col col-2"> &nbsp; </div>
         </div>
@@ -27,6 +23,10 @@
             <div class="col col-2"> &nbsp; </div>
             <div class="col col-8 text-center bg-secondary-subtle text-right"> 
                 <?php
+
+                include ('includes/db.php');
+                $conn = connect();
+
                 if(isset($_GET['page']) && !empty($_GET['page'])){
                     $currentPage = (int) strip_tags($_GET['page']);
                 }else{
@@ -60,79 +60,82 @@
                 <div class="image-name-wrapper">
                     <img class='img' src='assets/img/img_<?php echo $id; ?>.png'>
                     <div class="name"><?php echo $name; ?></div>
-                    <button class="more" onclick="openModal(<?php echo $id; ?>)"> See more </button>
+                    <button class="btn btn-secondary" onclick="openModal(<?php echo $id; ?>)"> See more </button>
                 </div>
                 <?php endforeach; ?>
             </div>
             </div>
 
-            
-
-            <nav aria-label="Page navigation exemple">
-            <ul class="pagination justify-content-center">
-                <!-- Page précédente -->
-                <?php
-                if ($currentPage > 1): ?>
-                <li class="page-item">
-                    <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">&lsaquo;</a>
-                </li>
-                <?php endif; ?>
- 
-                <!-- Première page -->
-                <?php if ($currentPage > 2): ?>
-                <li class="page-item">
-                    <a class="page-link" href="?page=1">1</a>
-                </li>
-                <?php elseif ($currentPage == 2): ?>
-                <li class="page-item">
-                    <a class="page-link" href="?page=1">1</a>
-                </li>
-                <?php endif; ?>
- 
-                <!-- Page précédente -->
-                <?php if ($currentPage > 2): ?>
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">...</a>
-                </li>
-                <?php endif; ?>
-                <!-- Page actuelle -->
-                <li class="page-item active">
-                    <a class="page-link" href="#"><?php echo $currentPage; ?></a>
-                </li>
- 
-                <!-- Page suivante -->
-                <?php if ($currentPage < $pages - 1): ?>
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">...</a>
-                </li>
-                <?php endif; ?>
- 
-                <!-- Dernière page -->
-                <?php if ($currentPage < $pages): ?>
-                <li class="page-item">
-                    <a class="page-link" href="?page=<?php echo $pages; ?>"><?php echo $pages; ?></a>
-                </li>
-                <?php endif; ?>
- 
-                <!-- Page suivante -->
-                <?php if ($currentPage < $pages): ?>
-                <li class="page-item">
-                    <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">&rsaquo;</a>
-                </li>
-                <?php endif; ?>
- 
-            </ul>
-            </nav>
-
         <div class="col col-2"> &nbsp; </div>
         </div>
+        
+        <div class="row">
+            <div class="col col-2"> &nbsp; </div>
+            <div class="col col-8 text-center bg-secondary-subtle text-right">
+                <nav aria-label="Page navigation exemple">
+                    <ul class="pagination justify-content-center">
+                        <!-- Page précédente -->
+                        <?php
+                        if ($currentPage > 1): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">&lsaquo;</a>
+                        </li>
+                        <?php endif; ?>
+     
+                        <!-- Première page -->
+                        <?php if ($currentPage > 2): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">1</a>
+                        </li>
+                        <?php elseif ($currentPage == 2): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1">1</a>
+                        </li>
+                        <?php endif; ?>
+     
+                        <!-- Page précédente -->
+                        <?php if ($currentPage > 2): ?>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">...</a>
+                        </li>
+                        <?php endif; ?>
+                        <!-- Page actuelle -->
+                        <li class="page-item active">
+                            <a class="page-link" href="#"><?php echo $currentPage; ?></a>
+                        </li>
+     
+                        <!-- Page suivante -->
+                        <?php if ($currentPage < $pages - 1): ?>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">...</a>
+                        </li>
+                        <?php endif; ?>
+     
+                        <!-- Dernière page -->
+                        <?php if ($currentPage < $pages): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<?php echo $pages; ?>"><?php echo $pages; ?></a>
+                        </li>
+                        <?php endif; ?>
+     
+                        <!-- Page suivante -->
+                        <?php if ($currentPage < $pages): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">&rsaquo;</a>
+                        </li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col col-2"> &nbsp; </div>
+        </div>
     </div>
-    
+                            
     <div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <iframe id="iframeDetail" src=""></iframe> <!-- Contenu à afficher dans la boîte modale -->
-    </div>
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <iframe id="iframeDetail" src=""></iframe> <!-- Contenu à afficher dans la boîte modale -->
+        </div>
     </div>
 
     <script>
@@ -144,7 +147,7 @@
 
         // Fonction pour fermer la boîte modale
         function closeModal() {
-            document.getElementById("myModal").style.display = "none";
+            document.getElementById("myModal").style ="".display = "none";
         }
     </script>
     </body>

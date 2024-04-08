@@ -1,4 +1,8 @@
 <?php
+
+include('includes/db.php');
+$conn = connect();
+
 // Vérifier si l'utilisateur est connecté
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -11,10 +15,12 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 
-if (!empty($_POST)) {
-    include('includes/db.php');
-    $conn = connect();
+$sql2 = "SELECT * FROM library.block WHERE id = ?";
+$stmt2 = $conn->prepare($sql2);
+$stmt2->execute([$id]);
+$block = $stmt2->fetch(PDO::FETCH_ASSOC);
 
+if (!empty($_POST)) {
     // Utilisez une requête UPDATE pour mettre à jour le nom d'utilisateur et le mot de passe
     $sql = "UPDATE library.block SET nominal_id=?, name=?, stackable=?, gravity=?, transparency=?, luminous=?, loot=? WHERE id=?;";
     $stmt = $conn->prepare($sql);
@@ -64,25 +70,24 @@ if (!empty($_POST)) {
 </head>
 <body>
     <h1 class="create"> Block update </h1>
-
     <form class="create" action="modif.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
-        Nominal ID: <br>
-        <input type="text" name="nominal"></input> <br>
+    Nominal ID: <br>
+        <input type="text" name="nominal" value="<?php echo $block['nominal_id'] ?? '' ?>"> <br>
         Name: <br>
-        <input type="text" name="name"></input> <br>
+        <input type="text" name="name" value="<?php echo $block['name'] ?? '' ?>"> <br>
         Stackable: <br>
-        <input type="text" name="stack"></input> <br>
-        Gravity (0 (No) / 1 (Yes)): <br>
-        <input type="text" name="gravity"></input> <br>
-        Transparent (0 / 1): <br>
-        <input type="text" name="trans"></input> <br>
-        Luminous (0 / 1): <br>
-        <input type="text" name="luminous"></input> <br>
+        <input type="text" name="stack" value="<?php echo $block['stackable'] ?? '' ?>"> <br>
+        Gravity? <br>
+        <select class="select" id="gravity" value="<?php echo $block['gravity'] ?? '' ?>"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+        Transparent? <br>
+        <select class="select" id="trans" value="<?php echo $block['trans'] ?? '' ?>"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+        Luminous? <br>
+        <select class="select" id="luminous" value="<?php echo $block['luminous'] ?? '' ?>"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
         Loot: <br>
-        <input type="text" name="loot"></input> <br>
+        <input type="text" name="loot" value="<?php echo $block['loot'] ?? '' ?>"> <br>
 
         <!-- Ajouter un champ caché pour l'ID de l'utilisateur -->
-        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>"></input>
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
         
         <!-- Ajouter un champ pour l'upload de l'image -->
         <label for="file">Image: </label>

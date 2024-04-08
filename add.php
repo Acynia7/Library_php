@@ -75,12 +75,12 @@ if (!empty($_POST)) {
     <input type="text" name="name"></input> <br>
     Stackable: <br>
     <input type="text" name="stack"></input> <br>
-    Gravity? (0 (No) / 1 (Yes)): <br>
-    <input type="text" name="gravity"></input> <br>
-    Transparent? (0 / 1): <br>
-    <input type="text" name="trans"></input> <br>
-    Luminous? (0 / 1): <br>
-    <input type="text" name="luminous"></input> <br>
+    Gravity?: <br>
+    <select class="select" id="gravity"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+    Transparent?: <br>
+    <select class="select" id="trans"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+    Luminous?: <br>
+    <select class="select" id="luminous"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
     Loot: <br>
     <input type="text" name="loot"></input> <br>
     <label for="file">Image: </label>
