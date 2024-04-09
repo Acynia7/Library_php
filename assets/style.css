@@ -67,6 +67,26 @@
     text-align: center; /* Centre le texte */
 }
 
+.container {
+    display: flex; /* Utilisation de flexbox pour aligner les éléments côte à côte */
+    align-items: center; /* Centrer les éléments verticalement */
+}
+
+.image {
+    flex: 0 0 auto; /* La largeur de cet élément est automatiquement ajustée en fonction de son contenu */
+    margin-right: 10px; /* Marge entre l'image et le paragraphe */
+}
+
+.text-container {
+    flex: 1; /* Le paragraphe prendra autant d'espace que possible */
+}
+
+.detail{
+    height:150px;
+    width:auto;
+    padding-right: 20px;
+}
+
 .modal {
     display: flex;
     flex-direction: column;
@@ -85,17 +105,18 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 68% !important;
-    height: auto;
-    overflow-y: auto; /* Ajoutez un défilement vertical si nécessaire */
+    width: 50% !important;
+    height: auto; /* Adjust this value to your desired height */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
 }
 
-.bg_detail{
+body.bg_detail{
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    row-gap: 10px;
     height: auto;
     background-image :url("background2.png"); 
     background-repeat:no-repeat; 

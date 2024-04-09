@@ -36,16 +36,25 @@ if (isset($_GET['id'])) {
 <body class="bg_detail">
     <div>
         <?php if ($result): ?>
-        Nominal ID : <?php echo $result['nominal_id']; ?> <br>
-        Name : <?php echo $result['name']; ?> <br>
-        Stackable : <?php echo $result['stackable']; ?> <br>
-        Gravity : <?php echo $result['gravity']; ?> <br>
-        Transparency : <?php echo $result['transparency']; ?> <br>
-        Luminous : <?php echo $result['luminous']; ?> <br>
-        Loot : <?php echo $result['loot']; ?> <br>
-        <?php else: ?>
-        <p>No details found for this ID.</p>
-        <?php endif; ?>
+        <div class="container">
+            <div class="image">
+                <img class="detail" src='assets/img/img_<?php echo $id; ?>.png'>
+            </div>
+            <div class="text-container">
+                <p>
+                Nominal ID : <?php echo $result['nominal_id']; ?> <br>
+                Name : <?php echo $result['name']; ?> <br>
+                Stackable : <?php echo $result['stackable']; ?> <br>
+                Gravity : <?php echo $result['gravity']; ?> <br>
+                Transparency : <?php echo $result['transparency']; ?> <br>
+                Luminous : <?php echo $result['luminous']; ?> <br>
+                Loot : <?php echo $result['loot']; ?> <br>
+                </p>
+                <?php else: ?>
+                <p>No details found for this ID.</p>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
 </body>
 

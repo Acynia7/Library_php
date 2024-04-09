@@ -147,7 +147,7 @@
 
         // Fonction pour fermer la boîte modale
         function closeModal() {
-            document.getElementById("myModal").style ="".display = "none";
+            document.getElementById("myModal").style.display = "none";
         }
     </script>
     </body>
