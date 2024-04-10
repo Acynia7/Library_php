@@ -54,8 +54,10 @@
             <input type="password" name="mdp" placeholder="Entrer le mot de passe"> <br> <br>
 
             <input type="submit" name="send" value="Envoyer"> <br> <br>
+
+            <p class="text">Pas de compte? <a href="register.php">Créer un compte </a> </p>
         </form>
-        <p class="text">Pas de compte? <a href="register.php">Créer un compte </a> </p>
+        
 
     </body>
 </html>

@@ -14,6 +14,10 @@
             <div class="col col-2"> &nbsp; </div>
             <div class="col text-left bg-white"> 
                 <a class="navbar-brand" href="index.php"> <img class="logo" src="assets/logo.jpg" style="object-fit: contain; margin-right: 0.3em"> </a>
+                <form class= "conn" action="search.php" method="POST">
+                    <a class="loupe" href="search.php"> <img class="search" src="assets/loupe.png" style="object-fit: contain; margin-right: 0.3em"> </a>
+                    <input type="text" name="q" placeholder="Rechercher"> </input>
+                </form>
                 <a class="conn" href="login.php">Connect as an admin</a>
             </div>
             <div class="col col-2"> &nbsp; </div>

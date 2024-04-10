@@ -78,11 +78,20 @@ if (!empty($_POST)) {
         Stackable: <br>
         <input type="text" name="stack" value="<?php echo $block['stackable'] ?? '' ?>"> <br>
         Gravity? <br>
-        <select class="select" id="gravity" value="<?php echo $block['gravity'] ?? '' ?>"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+        <select class="select" id="gravity" name="gravity">
+            <option value="0" <?php if (($block['gravity'] ?? '') == '0') echo 'selected'; ?>> No </option>
+            <option value="1" <?php if (($block['gravity'] ?? '') == '1') echo 'selected'; ?>> Yes </option>
+        </select> <br>
         Transparent? <br>
-        <select class="select" id="trans" value="<?php echo $block['trans'] ?? '' ?>"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+        <select class="select" id="trans" name="trans">
+            <option value="0" <?php if (($block['trans'] ?? '') == '0') echo 'selected'; ?>> No </option>
+            <option value="1" <?php if (($block['trans'] ?? '') == '1') echo 'selected'; ?>> Yes </option>
+        </select> <br>
         Luminous? <br>
-        <select class="select" id="luminous" value="<?php echo $block['luminous'] ?? '' ?>"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+        <select class="select" id="luminous" name="luminous">
+            <option value="0" <?php if (($block['luminous'] ?? '') == '0') echo 'selected'; ?>> No </option>
+            <option value="1" <?php if (($block['luminous'] ?? '') == '1') echo 'selected'; ?>> Yes </option>
+        </select> <br>
         Loot: <br>
         <input type="text" name="loot" value="<?php echo $block['loot'] ?? '' ?>"> <br>
 

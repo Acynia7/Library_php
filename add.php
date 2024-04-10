@@ -1,7 +1,4 @@
 <?php
-include('includes/db.php');
-$conn = connect();
-
 // Vérifier si l'utilisateur est connecté
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -10,6 +7,10 @@ if (!isset($_SESSION['login'])) {
 }
 
 if (!empty($_POST)) {
+
+    include('includes/db.php');
+    $conn = connect();
+
     $req = $conn->prepare("INSERT INTO library.block (nominal_id, name, stackable, gravity, transparency, luminous, loot) VALUES(:nominal, :name, :stack, :gravity, :trans, :luminous, :loot);");
 
     $nominal = $_POST['nominal'];
@@ -75,11 +76,11 @@ if (!empty($_POST)) {
     <input type="text" name="name"></input> <br>
     Stackable: <br>
     <input type="text" name="stack"></input> <br>
-    Gravity?: <br>
+    Gravity? <br>
     <select class="select" id="gravity"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
-    Transparent?: <br>
+    Transparent? <br>
     <select class="select" id="trans"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
-    Luminous?: <br>
+    Luminous? <br>
     <select class="select" id="luminous"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
     Loot: <br>
     <input type="text" name="loot"></input> <br>

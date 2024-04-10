@@ -14,9 +14,11 @@ body {
 
 /* Style du formulaire */
 form {
-    margin-top: 100px;
-    margin-left: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 40%;
+    margin: 0 auto; /* Ajoutez cette ligne pour centrer horizontalement la balise <form> */
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -33,10 +35,6 @@ h1 {
 /* Style du paragraphe */
 p {
     margin-bottom: 10px;
-}
-
-.text {
-    margin-left:400px;
 }
 
 .logout {
