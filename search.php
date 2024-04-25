@@ -10,16 +10,15 @@ if (!empty($_POST['q'])) {
     $sql = "SELECT * FROM library.block WHERE name LIKE ?";
     $stmt = $conn->prepare($sql);
     $stmt->execute(["%$search%"]);
-    $result = $stmt->fetch(); // Récupérer la première ligne de résultat
+    $results = $stmt->fetchAll(); // Récupérer tous les résultats
 
-    if (!$result){
+    if (!$results){
         echo "<p style='color: white;'>No info found with this keyword!</p>";
     }
 } else {
     echo "<p style='color: white;'>Please enter a keyword to search.</p>";
 }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -33,7 +32,7 @@ if (!empty($_POST['q'])) {
 </head>
 <body>
 <div>
-    <?php if ($result): ?>
+    <?php foreach ($results as $result): ?>
     <div class="container-search">
         <div class="image">
             <img class="detail" src='assets/img/img_<?php echo $result['id']; ?>.png'>
@@ -50,7 +49,7 @@ if (!empty($_POST['q'])) {
             </p>
         </div>
     </div>
-    <?php endif; ?>
+    <?php endforeach; ?>
 </div>
 </body>
 </html>

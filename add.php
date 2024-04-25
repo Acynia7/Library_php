@@ -7,7 +7,6 @@ if (!isset($_SESSION['login'])) {
 }
 
 if (!empty($_POST)) {
-
     include('includes/db.php');
     $conn = connect();
 
@@ -16,9 +15,9 @@ if (!empty($_POST)) {
     $nominal = $_POST['nominal'];
     $name = $_POST['name'];
     $stack = $_POST['stack'];
-    $gravity = $_POST['gravity'];
-    $trans = $_POST['trans'];
-    $luminous = $_POST['luminous'];
+    $gravity = isset($_POST['gravity']) ? $_POST['gravity'] : null; // Vérifier si la valeur est définie
+    $trans = isset($_POST['trans']) ? $_POST['trans'] : null;
+    $luminous = isset($_POST['luminous']) ? $_POST['luminous'] : null;
     $loot = $_POST['loot'];
 
     // Liaison des paramètres
@@ -71,23 +70,31 @@ if (!empty($_POST)) {
 
 <form class="create" action="add.php" method="post" enctype="multipart/form-data">
     Nominal ID: <br>
-    <input type="text" name="nominal"></input> <br>
+    <input type="text" name="nominal"><br>
     Name: <br>
-    <input type="text" name="name"></input> <br>
+    <input type="text" name="name"><br>
     Stackable: <br>
-    <input type="text" name="stack"></input> <br>
+    <input type="text" name="stack"><br>
     Gravity? <br>
-    <select class="select" id="gravity"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+    <select class="select" id="gravity" name="gravity"> <!-- Ajoutez l'attribut name -->
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+    </select><br>
     Transparent? <br>
-    <select class="select" id="trans"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+    <select class="select" id="trans" name="trans"> <!-- Ajoutez l'attribut name -->
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+    </select><br>
     Luminous? <br>
-    <select class="select" id="luminous"> <option value="0"> No </option> <option value="1"> Yes </option> </select> <br>
+    <select class="select" id="luminous" name="luminous"> <!-- Ajoutez l'attribut name -->
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+    </select><br>
     Loot: <br>
-    <input type="text" name="loot"></input> <br>
-    <label for="file">Image: </label>
-    <input type="file" name="file">
-
-    <input type="submit" name="send" value="Create"> <br> <br>
+    <input type="text" name="loot"><br>
+    <label for="file">Image:</label>
+    <input type="file" name="file"><br>
+    <input type="submit" name="send" value="Create"><br><br>
 </form>
 </body>
 </html>

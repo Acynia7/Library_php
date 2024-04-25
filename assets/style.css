@@ -110,6 +110,7 @@
 .modal {
     display: flex;
     flex-direction: column;
+    position:relative;
     align-items: center; /* Position fixe pour recouvrir toute la page */
     z-index: 1; /* Place la boîte modale au-dessus de tout le reste */
     left: 0;
@@ -121,16 +122,22 @@
 /* Style pour le contenu de la boîte modale */
 .modal-content {
     background-color: #fefefe;
-    position: fixed;
+    position: absolute;
+    bottom: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50% !important;
-    height: auto; /* Adjust this value to your desired height */
+    width: 68% !important;
+    height: 200px; /* Adjust this value to your desired height */
     overflow-y: auto; /* Add vertical scroll if content overflows */
 }
 
 body.bg_detail{
+    background-image :url("background2.png"); 
+    background-repeat:no-repeat; 
+    background-position:center; 
+    background-size:cover; 
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
     display: flex;
@@ -139,6 +146,10 @@ body.bg_detail{
     row-gap: 10px;
     height: auto;
     color: white;
+}
+
+#iframeDetail{
+    height:100%;
 }
 
 body {

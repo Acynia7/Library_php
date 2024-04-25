@@ -72,7 +72,7 @@ if (!isset($_SESSION['login'])) {
                 </a>
             </td>
             <td>
-                <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
+                <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce block ?')">
                     <img class='supp' src='assets/supprimer.png' style='width:25px;height:25px'>
                 </a>
             </td>
