@@ -62,9 +62,9 @@
                 $name = $row['name'];
                 ?>
                 <div class="image-name-wrapper">
-                    <img class='img' src='assets/img/img_<?php echo $id; ?>.png'>
-                    <div class="name"><?php echo $name; ?></div>
-                    <button class="btn btn-secondary" onclick="openModal(<?php echo $id; ?>)"> See more </button>
+                    <img class='img' src='assets/img/img_<?php echo htmlspecialchars($id); ?>.png'>
+                    <div class="name"><?php echo htmlspecialchars($name); ?></div>
+                    <button class="btn btn-secondary" onclick="openModal(<?php echo htmlspecialchars($id); ?>)"> See more </button>
                 </div>
                 <?php endforeach; ?>
             </div>

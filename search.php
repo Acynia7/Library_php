@@ -1,4 +1,5 @@
 <?php
+$results = [];
 if (!empty($_POST['q'])) {
     include('includes/db.php');
     $conn = connect();
@@ -32,24 +33,28 @@ if (!empty($_POST['q'])) {
 </head>
 <body>
 <div>
-    <?php foreach ($results as $result): ?>
-    <div class="container-search">
-        <div class="image">
-            <img class="detail" src='assets/img/img_<?php echo $result['id']; ?>.png'>
+    <?php if (!empty($results)): ?>
+        <?php foreach ($results as $result): ?>
+        <div class="container-search">
+            <div class="image">
+                <img class="detail" src='assets/img/img_<?php echo $result['id']; ?>.png'>
+            </div>
+            <div class="text-container">
+                <p>
+                Nominal ID : <?php echo $result['nominal_id']; ?> <br>
+                Name : <?php echo $result['name']; ?> <br>
+                Stackable : <?php echo $result['stackable']; ?> <br>
+                Gravity : <?php echo $result['gravity']; ?> <br>
+                Transparency : <?php echo $result['transparency']; ?> <br>
+                Luminous : <?php echo $result['luminous']; ?> <br>
+                Loot : <?php echo $result['loot']; ?> <br>
+                </p>
+            </div>
         </div>
-        <div class="text-container">
-            <p>
-            Nominal ID : <?php echo $result['nominal_id']; ?> <br>
-            Name : <?php echo $result['name']; ?> <br>
-            Stackable : <?php echo $result['stackable']; ?> <br>
-            Gravity : <?php echo $result['gravity']; ?> <br>
-            Transparency : <?php echo $result['transparency']; ?> <br>
-            Luminous : <?php echo $result['luminous']; ?> <br>
-            Loot : <?php echo $result['loot']; ?> <br>
-            </p>
-        </div>
-    </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p style='color: white;'>No info found with this keyword!</p>
+    <?php endif; ?>
 </div>
 </body>
 </html>
