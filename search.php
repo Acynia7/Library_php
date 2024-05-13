@@ -1,5 +1,8 @@
 <?php
 $results = [];
+$foundResults = false; // Variable pour suivre si des résultats ont été trouvés
+$firstTimeSubmitted = true; // Variable pour suivre si c'est la première soumission du formulaire
+
 if (!empty($_POST['q'])) {
     include('includes/db.php');
     $conn = connect();
@@ -13,14 +16,17 @@ if (!empty($_POST['q'])) {
     $stmt->execute(["%$search%"]);
     $results = $stmt->fetchAll(); // Récupérer tous les résultats
 
-    if (!$results){
-        echo "<p style='color: white;'>No info found with this keyword!</p>";
+    // Vérifier si des résultats ont été trouvés
+    if ($results) {
+        $foundResults = true;
     }
-} else {
-    echo "<p style='color: white;'>Please enter a keyword to search.</p>";
+    $firstTimeSubmitted = false; // Mettre à false car le formulaire a été soumis au moins une fois
+} 
+
+if ($firstTimeSubmitted) {
+    echo "<p class=container-search style='color: white;'>Please enter a keyword to search.</p>";
 }
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +39,7 @@ if (!empty($_POST['q'])) {
 </head>
 <body>
 <div>
-    <?php if (!empty($results)): ?>
+    <?php if ($foundResults): ?>
         <?php foreach ($results as $result): ?>
         <div class="container-search">
             <div class="image">
@@ -52,9 +58,11 @@ if (!empty($_POST['q'])) {
             </div>
         </div>
         <?php endforeach; ?>
-    <?php else: ?>
-        <p style='color: white;'>No info found with this keyword!</p>
+    <?php elseif (!$firstTimeSubmitted): ?>
+        <p class="container-search" style='color: white;'>No info found with this keyword!</p>
     <?php endif; ?>
 </div>
 </body>
 </html>
+
+
